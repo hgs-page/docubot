@@ -15,5 +15,19 @@ class DocumentProcessor:
 
 
 	def create_vector_db(self):
-		# code
-		return 1
+		loader = PyPDFLoader("content.pdf")
+		pages = loader.load_and_split()
+
+		text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+		texts = text_splitter.split_documents(pages)
+
+		model_name = "jhgan/ko-sbert-nli"
+		model_kwargs = {'device': 'cpu'}
+		encode_kwargs = {'normalize_embeddings': True}
+		hf = HuggingFaceEmbeddings(
+			model_name=model_name,
+			model_kwargs=model_kwargs,
+			encode_kwargs=encode_kwargs
+		)
+
+		return Chroma.from_documents(texts, hf)
