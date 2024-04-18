@@ -20,5 +20,7 @@ class ChatBot:
 		
 
 	def get_retriever(self, docsearch):
-		# code
-		pass
+		return docsearch.as_retriever(
+			search_type="mmr",
+			search_kwargs={'k': 3, 'fetch_k': 10}
+		)
