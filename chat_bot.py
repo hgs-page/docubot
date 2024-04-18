@@ -11,9 +11,16 @@ class ChatBot:
 		self.model = ChatGoogleGenerativeAI(model=model, temperature=temperature)
 
 	def create_chain(self, prompt):
-		# code
-		pass
+		vector_db = self.document_processor.create_vector_db()
+		retriever = self.get_retriever(vector_db)
+		return RunnableMap({
+			"context": lambda x: retriever.get_relevant_documents(x['question']),
+			"question": lambda x: x['question']
+		}) | prompt | self.model
+		
 
 	def get_retriever(self, docsearch):
-		# code
-		pass
+		return docsearch.as_retriever(
+			search_type="mmr",
+			search_kwargs={'k': 3, 'fetch_k': 10}
+		)
