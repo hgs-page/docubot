@@ -18,7 +18,7 @@ class DocumentProcessor:
 		loader = PyPDFLoader("content.pdf")
 		pages = loader.load_and_split()
 
-		text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+		text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
 		texts = text_splitter.split_documents(pages)
 
 		model_name = "jhgan/ko-sbert-nli"
