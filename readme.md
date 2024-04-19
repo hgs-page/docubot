@@ -27,7 +27,7 @@
    pip install ipython
    pip install langchain langchain-google-genai    langchain-community langchainhub langchain-chroma bs4
    pip install pypdf
-   pip install setence-transformers
+   pip install sentence-transformers
    ```
 2. config 파일을 설정합니다.
    - 이름 변경: _config.py -> config.py
