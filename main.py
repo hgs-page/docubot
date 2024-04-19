@@ -3,6 +3,7 @@ from chat_bot import ChatBot
 from prompt_creator import PromptCreator
 from api_key import API_KEY
 
+
 def main():
 	chat_bot = ChatBot(API_KEY)
 	prompt_creator = PromptCreator()
@@ -10,8 +11,29 @@ def main():
 	prompt = prompt_creator.from_template(template)
 	chain = chat_bot.create_chain(prompt)
 
-	question = "질문"
-	print(Markdown(chain.invoke({'question': question}).content).data)
+	history =[]
+
+	while len(history) < 10:
+		question =input("질문을 입력하세요(종료:'exit'): ")
+		if question.lower() == 'exit':
+			print("대화를 종료합니다")
+			return
+		history.append(question)
+		answer = chain.invoke({'question': question}).content
+		print(Markdown(answer).data)
+		
+		if len(history) ==10:
+			print("질문 횟수가 초과되어 대화를 종료합니다")
+			print("대화를 더 원하시는 경우 처음부터 재진행됩니다")
+			return
+	
+    
+	#print("질문과 답변 기록")
+	#for i, (q, a) in enumerate(zip(history, chain.invoke({'question': question}))):
+	#	pass
+		#print(f"{i+1}. 질문: {q}\n 답변: {a}\n")        
+
+ 
 
 if __name__ == "__main__":
 	main()
