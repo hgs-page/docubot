@@ -22,10 +22,7 @@
 ## 실행 방법
 1. 필요한 종속성을 설치합니다:
    ```bash
-   pip install ipython
-   pip install langchain langchain-google-genai langchain-community langchainhub langchain-chroma bs4
-   pip install pypdf
-   pip install setence-transformers
+   pip install ipython langchain langchain-google-genai langchain-community langchainhub langchain-chroma bs4 pypdf sentence-transformers
    ```
 2. 메인 스크립트를 실행합니다:
    ```bash
