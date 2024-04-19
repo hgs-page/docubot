@@ -5,7 +5,6 @@
 이 저장소는 문서 기반 질의응답을 제공하기 위해 문서 처리 기능과 챗봇 시스템을 통합한 파이썬 응용 프로그램을 포함합니다. 시스템은 문서를 처리하고, 이를 기반으로 벡터 데이터베이스를 생성한 다음, 사용자 질문에 대한 응답을 생성합니다.
 
 ## 저장소 구조
-- `merge.py`: 모든 기능을 결합한 주 스크립트.
 - `.gitignore`: 추적하지 않을 파일 목록을 지정합니다.
 - `api_key.py`: 외부 서비스의 API 키를 관리합니다. api는 gemini-pro를 이용한다.
 - `chat_bot.py`: 사용자 질문에 대한 응답을 생성하는 챗봇 기능을 구현합니다. temperature은 기본값으로 하고, create_vector_db 메서드를 사용하여 벡터 데이터베이스를 생성합니다. 파이프라인을 구성하고 리트리버 객체를 반환합니다.
@@ -34,7 +33,10 @@
 ## 실행 방법
 1. 필요한 종속성을 설치합니다:
    ```bash
-   pip install langchain-community langchain-google-genai IPython
+   pip install ipython
+   pip install langchain langchain-google-genai langchain-community langchainhub langchain-chroma bs4
+   pip install pypdf
+   pip install setence-transformers
    ```
 2. 메인 스크립트를 실행합니다:
    ```bash
