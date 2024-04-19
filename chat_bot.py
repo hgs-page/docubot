@@ -4,9 +4,9 @@ from document_processor import DocumentProcessor
 
 
 class ChatBot:
-	def __init__(self, api_key, model="gemini-pro", temperature=0.7):
-		self.api_key = api_key				
-		self.document_processor = DocumentProcessor(api_key)
+	def __init__(self, api_key:str, pdf_document:str, model="gemini-pro", temperature=0.7):
+		self.api_key = api_key
+		self.document_processor = DocumentProcessor(api_key, pdf_document)
 		self.document_processor.set_google_api_key()
 		self.model = ChatGoogleGenerativeAI(model=model, temperature=temperature)
 

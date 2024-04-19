@@ -6,8 +6,9 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 
 
 class DocumentProcessor:
-	def __init__(self, api_key):
+	def __init__(self, api_key:str, pdf_document:str):
 		self.api_key = api_key
+		self.pdf_document = pdf_document
 
 	def set_google_api_key(self):
 		if "GOOGLE_API_KEY" not in os.environ:
@@ -15,7 +16,7 @@ class DocumentProcessor:
 
 
 	def create_vector_db(self):
-		loader = PyPDFLoader("content.pdf")
+		loader = PyPDFLoader(self.pdf_document)
 		pages = loader.load_and_split()
 
 		text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)

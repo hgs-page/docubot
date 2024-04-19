@@ -1,11 +1,12 @@
 from IPython.display import Markdown
 from chat_bot import ChatBot
 from prompt_creator import PromptCreator
-from api_key import API_KEY
+from config import API_KEY
+from config import PDF_DOCUMENT
 
 
 def main():
-	chat_bot = ChatBot(API_KEY)
+	chat_bot = ChatBot(API_KEY, PDF_DOCUMENT)
 	prompt_creator = PromptCreator()
 	template = prompt_creator.create_template()
 	prompt = prompt_creator.from_template(template)
