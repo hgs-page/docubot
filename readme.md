@@ -19,17 +19,6 @@
 - **질의 응답**: 문서 컨텍스트를 사용하여 사용자 질문에 관련된 응답을 생성합니다.
 - **프롬프트 관리**: 문서 내용에 기반하여 동적으로 챗봇의 프롬프트 템플릿을 생성 및 관리합니다.
 
-
-## 파이썬 패키지
-     
-    ipython    
-    os
-    langchain langchain-google-genai langchain-community langchainhub langchain-chroma bs4
-    pypdf
-    setence-transformers
-
-아직 설치하지 않았다면 pip install 명령어로 설치하세요.
-
 ## 실행 방법
 1. 필요한 종속성을 설치합니다:
    ```bash
